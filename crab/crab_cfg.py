@@ -1,8 +1,9 @@
-from WMCore.Configuration import Configuration
+# from WMCore.Configuration import Configuration
 # from CRABClient.UserUtilities import config, getUsernameFromSiteDB
 from CRABClient.UserUtilities import config
 
-config = Configuration()
+# config = Configuration()
+config = config()
 
 config.section_("General")
 config.General.requestName = 'NanoPost1'

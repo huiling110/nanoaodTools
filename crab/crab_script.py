@@ -10,7 +10,7 @@ from PhysicsTools.NanoAODTools.postprocessing.examples.exampleModule import *
 
 
 p = PostProcessor(".",
-                  inputFiles(),
+                  inputFiles(), #read grid input with xcroot
                 #   "Jet_pt>200",
                   "Jet_nJet>5",
                   modules=[exampleModuleConstr()],

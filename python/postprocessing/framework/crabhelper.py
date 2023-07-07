@@ -7,6 +7,7 @@ import PSet
 
 
 def inputFiles():
+    #read the input from PSet.py and then convert to read them with xrdroot
     print("ARGV: " + str(sys.argv))
     JobNumber = sys.argv[1]
     crabFiles = PSet.process.source.fileNames

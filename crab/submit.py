@@ -41,14 +41,17 @@ if __name__ == "__main__":
         conf.JobType.inputFiles = ['crab_script.py', '../scripts/haddnano.py']
         conf.JobType.sendPythonFolder = True
         conf.JobType.allowUndistributedCMSSW = True
+        conf.JobType.maxJobRuntimeMin = 5
         conf.section_("Data")
         conf.Data.allowNonValidInputDataset = True
         conf.Data.inputDBS = 'global'
         conf.Data.publication = False
-        # conf.Data.splitting     = 'FileBased'
-        conf.Data.splitting = 'Automatic'
-        # conf.Data.unitsPerJob   = 1
-        conf.Data.unitsPerJob   = 200
+        conf.Data.splitting     = 'FileBased'
+        # conf.Data.splitting = 'Automatic'
+        conf.Data.unitsPerJob   = 1
+        # conf.Data.unitsPerJob = 2
+        # conf.Data.totalUnits = 10
+        # conf.Data.unitsPerJob   = 200
         conf.Data.inputDataset = dataset
         conf.Data.outLFNDirBase = '%s/%s/' % (mainOutputDir,'mc')
         conf.section_("User")
