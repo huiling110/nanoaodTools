@@ -1,5 +1,6 @@
 from WMCore.Configuration import Configuration
-from CRABClient.UserUtilities import config, getUsernameFromSiteDB
+# from CRABClient.UserUtilities import config, getUsernameFromSiteDB
+from CRABClient.UserUtilities import config
 
 config = Configuration()
 
@@ -22,12 +23,16 @@ config.Data.splitting = 'FileBased'
 config.Data.unitsPerJob = 2
 config.Data.totalUnits = 10
 
-config.Data.outLFNDirBase = '/store/user/%s/NanoPost' % (
-    getUsernameFromSiteDB())
+# config.Data.outLFNDirBase = '/store/user/%s/NanoPost' % (
+    # getUsernameFromSiteDB())
+config.Data.outLFNDirBase = '/store/user/hhua/'
 config.Data.publication = False
 config.Data.outputDatasetTag = 'NanoTestPost'
-config.section_("Site")
-config.Site.storageSite = "T2_DE_DESY"
+# config.section_("Site")
+config.section_("User")
+# config.Site.storageSite = "T2_DE_DESY"
+# config.Site.storageSite = "T2_CN_Beijing"
+config.Site.storageSite = 'T2_CN_Beijing'
 
 #config.Site.storageSite = "T2_CH_CERN"
 # config.section_("User")
