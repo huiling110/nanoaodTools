@@ -32,9 +32,6 @@ config.Data.outputDatasetTag = 'NanoTestPost'
 # config.section_("Site")
 config.section_("User")
 # config.Site.storageSite = "T2_DE_DESY"
-# config.Site.storageSite = "T2_CN_Beijing"
 config.Site.storageSite = 'T2_CN_Beijing'
-
 #config.Site.storageSite = "T2_CH_CERN"
-# config.section_("User")
 #config.User.voGroup = 'dcms'
