@@ -6,9 +6,13 @@ from PhysicsTools.NanoAODTools.postprocessing.framework.postprocessor import *
 from PhysicsTools.NanoAODTools.postprocessing.framework.crabhelper import inputFiles, runsAndLumis
 
 from PhysicsTools.NanoAODTools.postprocessing.examples.exampleModule import *
+
+
+
 p = PostProcessor(".",
                   inputFiles(),
-                  "Jet_pt>200",
+                #   "Jet_pt>200",
+                  "Jet_nJet>5",
                   modules=[exampleModuleConstr()],
                   provenance=True,
                   fwkJobReport=True,

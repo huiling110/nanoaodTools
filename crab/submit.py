@@ -45,8 +45,10 @@ if __name__ == "__main__":
         conf.Data.allowNonValidInputDataset = True
         conf.Data.inputDBS = 'global'
         conf.Data.publication = False
-        conf.Data.splitting     = 'FileBased'
-        conf.Data.unitsPerJob   = 1
+        # conf.Data.splitting     = 'FileBased'
+        conf.Data.splitting = 'Automatic'
+        # conf.Data.unitsPerJob   = 1
+        conf.Data.unitsPerJob   = 200
         conf.Data.inputDataset = dataset
         conf.Data.outLFNDirBase = '%s/%s/' % (mainOutputDir,'mc')
         conf.section_("User")
