@@ -19,14 +19,23 @@ samples = [
     # ('/TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22NanoAODv11-126X_mcRun3_2022_realistic_v2-v1/NANOAODSIM', 'TTto2L2Nu'),
     # ('/TTto4Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22NanoAODv11-126X_mcRun3_2022_realistic_v2-v1/NANOAODSIM', 'TTto4Q'),
     # ('/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv11-126X_mcRun3_2022_realistic_postEE_v1-v1/NANOAODSIM', 'TTtoLNu2Q'),
-    ('/JetHT/Run2022C-ReRecoNanoAODv11-v1/NANOAOD', 'JetHT2022C'),
-    ('/JetMET/Run2022C-ReRecoNanoAODv11-v1/NANOAOD', 'JetMet2022C'),
-    ('/JetMET/Run2022D-ReRecoNanoAODv11-v1/NANOAOD', 'JetMet2022D'),
+    # ('/JetHT/Run2022C-ReRecoNanoAODv11-v1/NANOAOD', 'JetHT2022C'),
+    # ('/JetMET/Run2022C-ReRecoNanoAODv11-v1/NANOAOD', 'JetMet2022C'),
+    # ('/JetMET/Run2022D-ReRecoNanoAODv11-v1/NANOAOD', 'JetMet2022D'),
+    #postEE
+    # ('/JetMET/Run2022E-ReRecoNanoAODv11-v1/NANOAOD', 'JetMet2022E'),
+    # ('/JetMET/Run2022F-PromptNanoAODv11_v1-v2/NANOAOD', 'JetMet2022F'),
+    # ('/JetMET/Run2022G-PromptNanoAODv11_v1-v2/NANOAOD', 'JetMet2022G'),
+    #mc
+    ('/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv11-126X_mcRun3_2022_realistic_postEE_v1-v1/NANOAODSIM', 'TTtoL2Nu2Q'),
+    # ('/TTto4Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv11-126X_mcRun3_2022_realistic_postEE_v1-v1/NANOAODSIM', 'TTto4Q'),
+    ('/TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv11-126X_mcRun3_2022_realistic_postEE_v1-v1/NANOAODSIM', 'TTto2L2Nu'),
 ]
 
 
-submitVersion = "crabNanoPost"
-# mainOutputDir = '/store/user/akapoor/%s' % submitVersion
+# submitVersion = "crabNanoPost"
+# submitVersion = "crabNanoPost_2022PostEE"
+submitVersion = "crabNanoPost_2022PostEE_v2"
 mainOutputDir = '/store/user/hhua/%s' % submitVersion
 
         
