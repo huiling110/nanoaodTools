@@ -10,8 +10,10 @@ instructions for submit crab jobs
 
 python 2 submit.py
 
+
 ## Setup Voms
 
 
 ## Check T2 dir 
+## Crab
 

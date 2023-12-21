@@ -5,6 +5,29 @@ from CRABClient.UserUtilities import config
 # import os
 
 # !!!needs to be run on python2
+def main(): 
+    # submitVersion = "crabNanoPost"
+    # submitVersion = "crabNanoPost_2022PostEE"
+    # submitVersion = "crabNanoPost_2022PostEE_v2" 
+    submitVersion = 'crabNanoPost_2022preEE_v3' 
+    inputDas = 'DASinputList.txt'
+   
+   
+   
+    
+    mainOutputDir = '/store/user/hhua/%s' % submitVersion
+    
+    dasList = getListFromTxt('DASinputList.txt')
+    # print(dasList)
+    dasDic = generateNamePair(dasList)
+    # print(dasDic)
+    # for dataset, name in samples:
+    # for idas in dasList:
+    #     submitCrab(dataset, submitVersion, True)
+        # submitCrab(idas, submitVersion, mainOutputDir)
+    for idas, name in dasDic:
+        print(idas, name)
+        submitCrab(idas, name, submitVersion, mainOutputDir)
 
  
 def submit(config):
@@ -33,14 +56,10 @@ samples = [
 ]
 
 
-# submitVersion = "crabNanoPost"
-# submitVersion = "crabNanoPost_2022PostEE"
-submitVersion = "crabNanoPost_2022PostEE_v2"
-mainOutputDir = '/store/user/hhua/%s' % submitVersion
 
         
         
-def submitCrab(dataset, submitVersion, isData=False):
+def submitCrab(dataset, name, submitVersion, mainOutputDir, isData=False):
     conf = config()
     conf.section_("General")
     conf.General.transferLogs = True        
@@ -53,7 +72,7 @@ def submitCrab(dataset, submitVersion, isData=False):
     conf.JobType.psetName = 'PSet.py'
     conf.JobType.scriptExe = 'crab_script.sh'
     conf.JobType.inputFiles = ['crab_script.py', '../scripts/haddnano.py']
-    conf.JobType.sendPythonFolder = True
+    # conf.JobType.sendPythonFolder = True # seems deprecated
     
     conf.section_("Data")
     conf.Data.inputDBS = 'global'
@@ -75,10 +94,35 @@ def getListFromTxt( DatasetTxt ):
     with open(DatasetTxt) as f:
         lines = f.readlines()
     return [x.strip() for x in lines]
+
+
+def generateNamePair( datasetList ):
+    # generate name pair for each element in datasetList, if name is overlapping, add a number to the end
+    name_dict = {}
+    for idas in datasetList:
+        name = idas.split('/')[1]
+        if name not in name_dict:
+            name_dict[name] = 0
+        else:
+            name_dict[name] += 1
+        yield (idas, name if name_dict[name] == 0 else name + str(name_dict[name]))    
+    # return name_dict 
+    
+    
+    
+    
+# def generateNamePair(datasetList):
+#     name_dict = {}
+#     for name in datasetList:
+#         if name not in name_dict:
+#             name_dict[name] = 0
+#         else:
+#             name_dict[name] += 1
+#         yield (name, name if name_dict[name] == 0 else name + str(name_dict[name]))
+    
+    
+    
         
         
 if __name__ == "__main__":
-    dasList = getListFromTxt('DASinputList.txt')
-    print(dasList)
-    # for dataset, name in samples:
-    #     submitCrab(dataset, submitVersion, True)
+    main()
