@@ -9,25 +9,22 @@ def main():
     # submitVersion = "crabNanoPost"
     # submitVersion = "crabNanoPost_2022PostEE"
     # submitVersion = "crabNanoPost_2022PostEE_v2" 
-    submitVersion = 'crabNanoPost_2022preEE_v3' 
-    inputDas = 'DASinputList.txt'
+    # submitVersion = 'crabNanoPost_2022preEE_v3' 
+    submitVersion = 'crabNanoPost_2022postEE_v3' 
+    # inputDas = 'DASinputList.txt'
+    # inputDas = './input/MC2022Samples.txt'
+    inputDas = './input/MC2022PostEESamples.txt'
+  
    
-   
-   
-    
     mainOutputDir = '/store/user/hhua/%s' % submitVersion
-    
-    dasList = getListFromTxt('DASinputList.txt')
+    dasList = getListFromTxt(inputDas)
     # print(dasList)
     dasDic = generateNamePair(dasList)
     # print(dasDic)
-    # for dataset, name in samples:
-    # for idas in dasList:
-    #     submitCrab(dataset, submitVersion, True)
-        # submitCrab(idas, submitVersion, mainOutputDir)
     for idas, name in dasDic:
         print(idas, name)
-        submitCrab(idas, name, submitVersion, mainOutputDir)
+        submitCrab(idas, name, submitVersion, mainOutputDir)#MC
+        print('\n')
 
  
 def submit(config):
@@ -79,7 +76,7 @@ def submitCrab(dataset, name, submitVersion, mainOutputDir, isData=False):
     conf.Data.publication = False
     conf.Data.splitting     = 'FileBased'
     conf.Data.unitsPerJob   = 1
-    conf.Data.inputDataset = dataset
+    conf.Data.inputDataset = dataset 
     if not isData:
         outDir = '%s/%s/' % (mainOutputDir,'mc')
     else:
@@ -93,6 +90,8 @@ def submitCrab(dataset, name, submitVersion, mainOutputDir, isData=False):
 def getListFromTxt( DatasetTxt ):
     with open(DatasetTxt) as f:
         lines = f.readlines()
+        #not including lines starting with #
+        lines = [x for x in lines if not x.startswith('#')]
     return [x.strip() for x in lines]
 
 
@@ -100,6 +99,7 @@ def generateNamePair( datasetList ):
     # generate name pair for each element in datasetList, if name is overlapping, add a number to the end
     name_dict = {}
     for idas in datasetList:
+        if not idas.startswith('/'): continue
         name = idas.split('/')[1]
         if name not in name_dict:
             name_dict[name] = 0
