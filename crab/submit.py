@@ -4,7 +4,7 @@ from CRABClient.UserUtilities import config
 # from copy import deepcopy
 # import os
 
-# needs to be run on python2
+# !!!needs to be run on python2
 
  
 def submit(config):
@@ -70,10 +70,15 @@ def submitCrab(dataset, submitVersion, isData=False):
     conf.section_("User")
     conf.Site.storageSite = "T2_CN_Beijing"
     submit(conf)
-        
+
+def getListFromTxt( DatasetTxt ):
+    with open(DatasetTxt) as f:
+        lines = f.readlines()
+    return [x.strip() for x in lines]
         
         
 if __name__ == "__main__":
-    for dataset, name in samples:
-        # submitCrab(dataset, submitVersion)
-        submitCrab(dataset, submitVersion, True)
+    dasList = getListFromTxt('DASinputList.txt')
+    print(dasList)
+    # for dataset, name in samples:
+    #     submitCrab(dataset, submitVersion, True)
