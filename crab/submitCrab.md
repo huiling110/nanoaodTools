@@ -7,9 +7,9 @@ instructions for submit crab jobs
 `source /cvmfs/cms.cern.ch/common/crab-setup.sh`
 `voms`
 
-
 python 2 submit.py
 
+Python code actually running: 
 
 ## Setup Voms
 
