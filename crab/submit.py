@@ -11,9 +11,11 @@ def main():
     # submitVersion = "crabNanoPost_2022PostEE_v2" 
     # submitVersion = 'crabNanoPost_2022preEE_v3' 
     submitVersion = 'crabNanoPost_2022postEE_v3' 
+    # submitVersion = 'crabNanoPost_2022postEE_v3_data' 
     # inputDas = 'DASinputList.txt'
     # inputDas = './input/MC2022Samples.txt'
-    inputDas = './input/MC2022PostEESamples.txt'
+    # inputDas = './input/MC2022PostEESamples.txt'
+    inputDas = './input/data2022_nanoAODv12.txt'
   
    
     mainOutputDir = '/store/user/hhua/%s' % submitVersion
@@ -22,10 +24,17 @@ def main():
     dasDic = generateNamePair(dasList)
     # print(dasDic)
     for idas, name in dasDic:
-        print(idas, name)
-        submitCrab(idas, name, submitVersion, mainOutputDir)#MC
+        isData = ifDATA(name)
+        print(idas, name, isData)
+        submitCrab(idas, name, submitVersion, mainOutputDir, isData)
+        # submitCrab(idas, name, submitVersion, mainOutputDir)#MC
         print('\n')
 
+def ifDATA(name):
+    if 'JetHT' in name or 'JetMET' in name:
+        return True
+    else:
+        return False
  
 def submit(config):
     res = crabCommand('submit', config = config)
@@ -33,7 +42,7 @@ def submit(config):
     with open(config.General.workArea + "/crab_" + config.General.requestName + "/crab_config.py", "w") as fi:
         fi.write(config.pythonise_())
 
-samples = [
+# samples = [
     # ('/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIISummer20UL16NanoAODAPVv9-106X_mcRun2_asymptotic_preVFP_v11-v1/NANOAODSIM', 
     #  'DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8_RunIISummer20UL16NanoAODAPV'),
     # ('/TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22NanoAODv11-126X_mcRun3_2022_realistic_v2-v1/NANOAODSIM', 'TTto2L2Nu'),
@@ -47,10 +56,10 @@ samples = [
     # ('/JetMET/Run2022F-PromptNanoAODv11_v1-v2/NANOAOD', 'JetMet2022F'),
     # ('/JetMET/Run2022G-PromptNanoAODv11_v1-v2/NANOAOD', 'JetMet2022G'),
     #mc
-    ('/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv11-126X_mcRun3_2022_realistic_postEE_v1-v1/NANOAODSIM', 'TTtoL2Nu2Q'),
+    # ('/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv11-126X_mcRun3_2022_realistic_postEE_v1-v1/NANOAODSIM', 'TTtoL2Nu2Q'),
     # ('/TTto4Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv11-126X_mcRun3_2022_realistic_postEE_v1-v1/NANOAODSIM', 'TTto4Q'),
-    ('/TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv11-126X_mcRun3_2022_realistic_postEE_v1-v1/NANOAODSIM', 'TTto2L2Nu'),
-]
+    # ('/TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/Run3Summer22EENanoAODv11-126X_mcRun3_2022_realistic_postEE_v1-v1/NANOAODSIM', 'TTto2L2Nu'),
+# ]
 
 
 
