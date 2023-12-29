@@ -8,7 +8,8 @@ def main():
     # crabDir = '/afs/cern.ch/work/h/hhua/nanoAOD/CMSSW_10_6_18/src/PhysicsTools/NanoAODTools/crab/crab_crabNanoPost_2022preEE_v3/'
     crabDir = '/afs/cern.ch/work/h/hhua/nanoAOD/CMSSW_10_6_18/src/PhysicsTools/NanoAODTools/crab/crab_crabNanoPost_2022postEE_v3/'
     # crabDir = '/afs/cern.ch/work/h/hhua/nanoAOD/CMSSW_10_6_18/src/PhysicsTools/NanoAODTools/crab/crab_crabNanoPost_data_v3/'
-    ifResubmit = False
+    # ifResubmit = False
+    ifResubmit = True
    
     
     for ipro in os.listdir(crabDir):
@@ -36,7 +37,7 @@ def checkStatus(jobDir, ifResubmit=False):
     print('\n')
     
 def resubmit(jobDir, ifRe=True):
-    print('!!!resubmitting...')
+    print('!!!resubmitting......')
     if ifRe:
         command = 'crab resubmit -d ' + jobDir 
     else:
