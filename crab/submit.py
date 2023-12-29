@@ -10,8 +10,8 @@ def main():
     # submitVersion = "crabNanoPost_2022PostEE"
     # submitVersion = "crabNanoPost_2022PostEE_v2" 
     # submitVersion = 'crabNanoPost_2022preEE_v3' 
-    submitVersion = 'crabNanoPost_2022postEE_v3' 
-    # submitVersion = 'crabNanoPost_2022postEE_v3_data' 
+    # submitVersion = 'crabNanoPost_2022postEE_v3' 
+    submitVersion = 'crabNanoPost_data_v3' 
     # inputDas = 'DASinputList.txt'
     # inputDas = './input/MC2022Samples.txt'
     # inputDas = './input/MC2022PostEESamples.txt'
@@ -117,17 +117,6 @@ def generateNamePair( datasetList ):
         yield (idas, name if name_dict[name] == 0 else name + str(name_dict[name]))    
     # return name_dict 
     
-    
-    
-    
-# def generateNamePair(datasetList):
-#     name_dict = {}
-#     for name in datasetList:
-#         if name not in name_dict:
-#             name_dict[name] = 0
-#         else:
-#             name_dict[name] += 1
-#         yield (name, name if name_dict[name] == 0 else name + str(name_dict[name]))
     
     
     
