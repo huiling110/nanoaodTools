@@ -9,13 +9,13 @@ def main():
     # submitVersion = "crabNanoPost"
     # submitVersion = "crabNanoPost_2022PostEE"
     # submitVersion = "crabNanoPost_2022PostEE_v2" 
-    submitVersion = 'crabNanoPost_2022preEE_v3' 
+    # submitVersion = 'crabNanoPost_2022preEE_v3' 
     # submitVersion = 'crabNanoPost_2022postEE_v3' 
-    # submitVersion = 'crabNanoPost_data_v3' 
+    submitVersion = 'crabNanoPost_data_v3' 
     # inputDas = 'DASinputList.txt'
-    inputDas = './input/MC2022Samples.txt'
+    # inputDas = './input/MC2022Samples.txt'
     # inputDas = './input/MC2022PostEESamples.txt'
-    # inputDas = './input/data2022_nanoAODv12.txt'
+    inputDas = './input/data2022_nanoAODv12.txt'
   
    
     mainOutputDir = '/store/user/hhua/%s' % submitVersion
